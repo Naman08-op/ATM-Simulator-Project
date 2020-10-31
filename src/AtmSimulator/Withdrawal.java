@@ -115,17 +115,16 @@ public class Withdrawal extends JFrame implements ActionListener {
                     
                     
                     
-                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+b+"' ");
+                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+b+"' ORDER BY Id DESC LIMIT 1");
                     
-                    double balance = 0;
                     if(rs.next()){
                         String pin = rs.getString("pin");
                         
-                        balance = rs.getDouble("balance");
+                        Double balance = rs.getDouble("balance");
                         
                         double d = Double.parseDouble(a);
-                        balance-=d;
-                        String q1= "insert into bank values('"+pin+"',null,'"+d+"','"+balance+"')";
+                        balance=balance-d;
+                        String q1= "insert into bank(pin,deposit,withdraw,balance) values('"+pin+"',null,'"+d+"','"+balance+"')";
                     
                         c1.s.executeUpdate(q1);
                     }
