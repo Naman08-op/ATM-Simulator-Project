@@ -121,14 +121,14 @@ public class Deposit extends JFrame implements ActionListener {
                     
                     
                     
-                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+b+"' ");
+                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+b+"' ORDER BY Id DESC LIMIT 1");
                     
-                    double balance = 0;
+                    
                     if(rs.next()){
                         String pin = rs.getString("pin");
- 						while(rs.next()) {                       
-                        balance = rs.getDouble("balance");
-                        }
+ 						                      
+                        Double balance = rs.getDouble("balance");
+                        
                         
                         double d = Double.parseDouble(a);
                         balance=balance+d;
