@@ -33,8 +33,8 @@ public class Deposit extends JFrame implements ActionListener {
         l2 = new JLabel("TO DEPOSIT");
         l2.setFont(new Font("Dialog", Font.BOLD, 35));
         
-        l3 = new JLabel("Enter Pin");
-        l3.setFont(new Font("Dialog", Font.BOLD, 23));
+//        l3 = new JLabel("Enter Pin");
+//        l3.setFont(new Font("Dialog", Font.BOLD, 23));
         
         l4 = new JLabel("Enter Amount");
         l4.setFont(new Font("Dialog", Font.BOLD, 23));
@@ -42,8 +42,8 @@ public class Deposit extends JFrame implements ActionListener {
         t1 = new JTextField();
         t1.setFont(new Font("Dialog", Font.BOLD, 22));
         
-        p1 = new JPasswordField();
-        p1.setFont(new Font("Dialog", Font.BOLD, 22));
+//        p1 = new JPasswordField();
+//        p1.setFont(new Font("Dialog", Font.BOLD, 22));
         
         b1 = new JButton("DEPOSIT");
         b1.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -60,14 +60,14 @@ public class Deposit extends JFrame implements ActionListener {
         
         setLayout(null);
         
-        l3.setBounds(93,390,200,60);
-        add(l3);
+//        l3.setBounds(93,390,200,60);
+//        add(l3);
         
         l4.setBounds(93,290,200,60);
         add(l4);
         
-        p1.setBounds(250,400,300,50);
-        add(p1);
+//        p1.setBounds(250,400,300,50);
+//        add(p1);
         
         l1.setBounds(150,150,800,60);
         add(l1);
@@ -103,7 +103,7 @@ public class Deposit extends JFrame implements ActionListener {
         try{        
            
             String a = t1.getText();
-            String b = p1.getText();
+//            String b = p1.getText();
             
             
             
@@ -113,20 +113,21 @@ public class Deposit extends JFrame implements ActionListener {
                     
                     JOptionPane.showMessageDialog(null, "Please enter the Amount to you want to Deposit");
                 
-                }else if(p1.getText().equals("")){
-                    JOptionPane.showMessageDialog(null, "Please enter a valid Pin.");
                 }else{
                     
                     conn c1 = new conn();
                     
                     
                     
-                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+b+"' ORDER BY Id DESC LIMIT 1");
                     
+                    String q7=("SELECT * FROM register2 ORDER BY Id DESC LIMIT 1;");
+                    ResultSet rs1= c1.s.executeQuery(q7);
                     
-                    if(rs.next()){
-                        String pin = rs.getString("pin");
- 						                      
+                    if(rs1.next()){
+                        String pin = rs1.getString("pin");
+ 			
+                        ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ORDER BY Id DESC LIMIT 1");
+                        if(rs.next()){
                         Double balance = rs.getDouble("balance");
                         
                         
@@ -137,7 +138,7 @@ public class Deposit extends JFrame implements ActionListener {
                         c1.s.executeUpdate(q1);
                     }
                     
-                    
+                    }
                     
                     JOptionPane.showMessageDialog(null, "Rs. "+a+" Deposited Successfully");
                     
