@@ -32,14 +32,14 @@ public class Withdrawal extends JFrame implements ActionListener {
         l3 = new JLabel("PLEASE ENTER YOUR AMOUNT");
         l3.setFont(new Font("Dialog", Font.BOLD, 35));
         
-        l4 = new JLabel("Enter Pin");
-        l4.setFont(new Font("Dialog", Font.BOLD, 14));
+//        l4 = new JLabel("Enter Pin");
+//        l4.setFont(new Font("Dialog", Font.BOLD, 14));
         
         t1 = new JTextField();
         t1.setFont(new Font("Dialog", Font.BOLD, 22));
         
-        t2 = new JTextField();
-        t2.setFont(new Font("Dialog", Font.BOLD, 14));
+//        t2 = new JTextField();
+//        t2.setFont(new Font("Dialog", Font.BOLD, 14));
         
         b1 = new JButton("WITHDRAW");
         b1.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -56,11 +56,11 @@ public class Withdrawal extends JFrame implements ActionListener {
         
         setLayout(null);
         
-        l4.setBounds(620,10,80,30);
-        add(l4);
+//        l4.setBounds(620,10,80,30);
+//        add(l4);
         
-        t2.setBounds(700,10,40,30);
-        add(t2);
+//        t2.setBounds(700,10,40,30);
+//        add(t2);
         
         l1.setBounds(90,100,800,60);
         add(l1);
@@ -99,7 +99,7 @@ public class Withdrawal extends JFrame implements ActionListener {
         try{        
            
             String a = t1.getText();
-            String b = t2.getText();
+    //            String b = t2.getText();
             
             
             
@@ -113,13 +113,16 @@ public class Withdrawal extends JFrame implements ActionListener {
                     
                     conn c1 = new conn();
                     
+                    String q7=("SELECT * FROM register2 ORDER BY Id DESC LIMIT 1;");
+                    ResultSet rs1= c1.s.executeQuery(q7);
                     
                     
-                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+b+"' ORDER BY Id DESC LIMIT 1");
-                    
-                    if(rs.next()){
-                        String pin = rs.getString("pin");
+                    if(rs1.next()){
+                        String pin = rs1.getString("pin");
                         
+                        ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ORDER BY Id DESC LIMIT 1");
+                        if(rs.next()){
+
                         Double balance = rs.getDouble("balance");
                         
                         double d = Double.parseDouble(a);
@@ -128,7 +131,7 @@ public class Withdrawal extends JFrame implements ActionListener {
                     
                         c1.s.executeUpdate(q1);
                     }
-                    
+                    }
                     
                     
                     JOptionPane.showMessageDialog(null, "Rs. "+a+" Debited Successfully");
