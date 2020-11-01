@@ -126,19 +126,31 @@ public class Withdrawal extends JFrame implements ActionListener {
                         Double balance = rs.getDouble("balance");
                         
                         double d = Double.parseDouble(a);
-                        balance=balance-d;
+                        
+                        if(d>10000){
+                        JOptionPane.showMessageDialog(null, "Daily withdrawal limit is 10,000.");
+                        
+                        }
+                        else if(d>balance){
+                        JOptionPane.showMessageDialog(null, "Not sufficient funds in your account.");
+                        
+                        }
+                        else if(balance>=d ){
+                            balance=balance-d;
                         String q1= "insert into bank(pin,deposit,withdraw,balance) values('"+pin+"',null,'"+d+"','"+balance+"')";
                     
                         c1.s.executeUpdate(q1);
+                        JOptionPane.showMessageDialog(null, "Rs. "+a+" Debited Successfully");
                     }
+                        
                     }
                     
                     
-                    JOptionPane.showMessageDialog(null, "Rs. "+a+" Debited Successfully");
+                    
                     
                     new Transactions().setVisible(true);
                     setVisible(false);
-                    
+                    }
                     
                     
                 }
