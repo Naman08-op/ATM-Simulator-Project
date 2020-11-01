@@ -113,7 +113,7 @@ public class Withdrawal extends JFrame implements ActionListener {
                     
                     conn c1 = new conn();
                     
-                    String q7=("SELECT * FROM register2 ORDER BY Id DESC LIMIT 1;");
+                    String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
                     ResultSet rs1= c1.s.executeQuery(q7);
                     
                     
