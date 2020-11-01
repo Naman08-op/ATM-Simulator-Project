@@ -117,20 +117,20 @@ public class FastCash extends JFrame implements ActionListener{
 //            String a = t1.getText();
 //            double balance = 0;
             
-            conn c1 = new conn();
+            
+            
+            
+            if(ae.getSource()==b1){
+                
+                    conn c1 = new conn();
             String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
                     ResultSet rs1= c1.s.executeQuery(q7);
                     
                     
                     if(rs1.next()){
                         String pin = rs1.getString("pin");
-            
-            
-            if(ae.getSource()==b1){
-                
                     
-                    
-                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ");
+                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ORDER BY Id DESC LIMIT 1");
                     
                     
                     if(rs.next()){
@@ -139,12 +139,12 @@ public class FastCash extends JFrame implements ActionListener{
                         Double balance = rs.getDouble("balance");
                      
                         balance-=100;
-                        String q1= "insert into bank values('"+pin+"',null,100,'"+balance+"')";
+                        String q1= "insert into bank(pin,deposit,withdraw,balance) values('"+pin+"',null,100,'"+balance+"')";
                     
                         c1.s.executeUpdate(q1);
                     }
                     
-                    
+                    }
                     
                     JOptionPane.showMessageDialog(null, "Rs. "+100+" Debited Successfully");
                     
@@ -159,20 +159,29 @@ public class FastCash extends JFrame implements ActionListener{
             else if(ae.getSource()==b2){
                 
                     
-                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ");
+                    conn c1 = new conn();
+            String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
+                    ResultSet rs1= c1.s.executeQuery(q7);
+                    
+                    
+                    if(rs1.next()){
+                        String pin = rs1.getString("pin");
+                    
+                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ORDER BY Id DESC LIMIT 1");
                     
                     
                     if(rs.next()){
                         
-                         Double balance = rs.getDouble("balance");
+                        
+                        Double balance = rs.getDouble("balance");
                      
                         balance-=500;
-                        String q2= "insert into bank values('"+pin+"',null,500,'"+balance+"')";
+                        String q1= "insert into bank(pin,deposit,withdraw,balance) values('"+pin+"',null,500,'"+balance+"')";
                     
-                        c1.s.executeUpdate(q2);
+                        c1.s.executeUpdate(q1);
                     }
                     
-                    
+                    }
                     
                     JOptionPane.showMessageDialog(null, "Rs. "+500+" Debited Successfully");
                     
@@ -185,20 +194,29 @@ public class FastCash extends JFrame implements ActionListener{
             else if(ae.getSource()==b3){
                 
                     
-                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ");
+                    conn c1 = new conn();
+            String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
+                    ResultSet rs1= c1.s.executeQuery(q7);
+                    
+                    
+                    if(rs1.next()){
+                        String pin = rs1.getString("pin");
+                    
+                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ORDER BY Id DESC LIMIT 1");
                     
                     
                     if(rs.next()){
                         
+                        
                         Double balance = rs.getDouble("balance");
                      
                         balance-=1000;
-                        String q3= "insert into bank values('"+pin+"',null,1000,'"+balance+"')";
+                        String q1= "insert into bank(pin,deposit,withdraw,balance) values('"+pin+"',null,1000,'"+balance+"')";
                     
-                        c1.s.executeUpdate(q3);
+                        c1.s.executeUpdate(q1);
                     }
                     
-                    
+                    }
                     
                     JOptionPane.showMessageDialog(null, "Rs. "+1000+" Debited Successfully");
                     
@@ -211,20 +229,29 @@ public class FastCash extends JFrame implements ActionListener{
             else if(ae.getSource()==b4){
                 
                     
-                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ");
+                    conn c1 = new conn();
+            String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
+                    ResultSet rs1= c1.s.executeQuery(q7);
+                    
+                    
+                    if(rs1.next()){
+                        String pin = rs1.getString("pin");
+                    
+                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ORDER BY Id DESC LIMIT 1");
                     
                     
                     if(rs.next()){
                         
+                        
                         Double balance = rs.getDouble("balance");
                      
                         balance-=2000;
-                        String q4= "insert into bank values('"+pin+"',null,2000,'"+balance+"')";
+                        String q1= "insert into bank(pin,deposit,withdraw,balance) values('"+pin+"',null,2000,'"+balance+"')";
                     
-                        c1.s.executeUpdate(q4);
+                        c1.s.executeUpdate(q1);
                     }
                     
-                    
+                    }
                     
                     JOptionPane.showMessageDialog(null, "Rs. "+2000+" Debited Successfully");
                     
@@ -237,20 +264,29 @@ public class FastCash extends JFrame implements ActionListener{
             else if(ae.getSource()==b5){
                 
                     
-                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ");
+                    conn c1 = new conn();
+            String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
+                    ResultSet rs1= c1.s.executeQuery(q7);
+                    
+                    
+                    if(rs1.next()){
+                        String pin = rs1.getString("pin");
+                    
+                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ORDER BY Id DESC LIMIT 1");
                     
                     
                     if(rs.next()){
                         
+                        
                         Double balance = rs.getDouble("balance");
                      
                         balance-=5000;
-                        String q5= "insert into bank values('"+pin+"',null,5000,'"+balance+"')";
+                        String q1= "insert into bank(pin,deposit,withdraw,balance) values('"+pin+"',null,5000,'"+balance+"')";
                     
-                        c1.s.executeUpdate(q5);
+                        c1.s.executeUpdate(q1);
                     }
                     
-                    
+                    }
                     
                     JOptionPane.showMessageDialog(null, "Rs. "+5000+" Debited Successfully");
                     
@@ -263,7 +299,15 @@ public class FastCash extends JFrame implements ActionListener{
             else if(ae.getSource()==b6){
                 
                     
-                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ");
+                    conn c1 = new conn();
+            String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
+                    ResultSet rs1= c1.s.executeQuery(q7);
+                    
+                    
+                    if(rs1.next()){
+                        String pin = rs1.getString("pin");
+                    
+                    ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ORDER BY Id DESC LIMIT 1");
                     
                     
                     if(rs.next()){
@@ -272,12 +316,12 @@ public class FastCash extends JFrame implements ActionListener{
                         Double balance = rs.getDouble("balance");
                      
                         balance-=10000;
-                        String q6= "insert into bank values('"+pin+"',null,10000,'"+balance+"')";
+                        String q1= "insert into bank(pin,deposit,withdraw,balance) values('"+pin+"',null,10000,'"+balance+"')";
                     
-                        c1.s.executeUpdate(q6);
+                        c1.s.executeUpdate(q1);
                     }
                     
-                    
+                    }
                     
                     JOptionPane.showMessageDialog(null, "Rs. "+10000+" Debited Successfully");
                     
@@ -288,7 +332,7 @@ public class FastCash extends JFrame implements ActionListener{
                     
                 }
                 
-                    }
+                    
             else if(ae.getSource()==b7){
                 
                 System.exit(0);
