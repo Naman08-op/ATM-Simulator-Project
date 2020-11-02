@@ -108,7 +108,7 @@ public class Register2 extends JFrame implements ActionListener {
         l16=new JLabel("ATM ID");
         l16.setFont(new Font("Dialog",Font.BOLD,20));
         
-        l17=new JLabel("@smartbank.rbi.dy.in");
+        l17=new JLabel("@smartbank.dy.in");
         //l17=new JLabel(final_nameid+form+"@smartbank.rbi.dy.in");
         l17.setFont(new Font("Dialog",Font.BOLD,20));
         
@@ -346,9 +346,9 @@ public class Register2 extends JFrame implements ActionListener {
         //form number generated in Register.java class is 7979
         //so the ATMid should be namanchhajed7979@smartbank.rbi.dy.in
         
-        //String first5=final_nameid+form+"@smartbank.rbi.dy.in";
+        //String first5=final_nameid+form+"@smartbank.dy.in";
         
-        String first5=final_name+form+"@smartbank.rbi.dy.in";
+        String first5=final_name+form+"@smartbank.dy.in";
         
         
         //end of atm id func
