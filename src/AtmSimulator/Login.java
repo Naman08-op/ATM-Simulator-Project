@@ -39,25 +39,20 @@ public class Login extends JFrame implements ActionListener{
         
         l2 = new JLabel("ATM ID:");
         l2.setFont(new Font("Dialog", Font.BOLD, 28));
-        l2.setForeground(Color.DARK_GRAY);
         
         l3 = new JLabel("PIN:");
         l3.setFont(new Font("Dialog", Font.BOLD, 28));
-        l3.setForeground(Color.DARK_GRAY);
         tf1 = new JTextField(15);
         pf2 = new JPasswordField(15);
         
         b1 = new JButton("SIGN IN");
-        b1.setBackground(Color.DARK_GRAY);
-        b1.setForeground(Color.WHITE);
+        
         
         b2 = new JButton("CLEAR");
-        b2.setBackground(Color.DARK_GRAY);
-        b2.setForeground(Color.WHITE);
+        
         
         b3 = new JButton("SIGN UP");
-        b3.setBackground(Color.DARK_GRAY);
-        b3.setForeground(Color.WHITE);
+        
         
         setLayout(null);
         
@@ -97,7 +92,6 @@ public class Login extends JFrame implements ActionListener{
         b2.addActionListener(this);
         b3.addActionListener(this);
         
-        getContentPane().setBackground(Color.LIGHT_GRAY);
         
         setSize(750,750);
         setLocation(500,200);
