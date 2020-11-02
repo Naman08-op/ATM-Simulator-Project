@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package AtmSimulator;
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
