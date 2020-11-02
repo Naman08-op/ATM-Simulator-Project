@@ -17,7 +17,7 @@ public class MiniStatement extends JFrame implements ActionListener{
     JTable t1;
     JButton b1;
     String x[] = {"Date & Time","Deposit","Withdraw","Balance"};
-    String y[][] = new String[50][4];
+    String y[][] = new String[35][4];
     int i=0, j=0;
     
     MiniStatement(){
@@ -35,9 +35,9 @@ public class MiniStatement extends JFrame implements ActionListener{
                     
                     if(rs1.next()){
                         String pin = rs1.getString("pin");
-            ResultSet rs = c1.s.executeQuery("SELECT time,deposit,withdraw,balance FROM bank where pin = '" + pin + "'");
-          String s1 = "select time,deposit,withdraw,balance from bank";
-           rs  = c1.s.executeQuery(s1);
+            ResultSet rs;
+                rs = c1.s.executeQuery("SELECT time,deposit,withdraw,balance FROM bank where pin = '" + pin + "'ORDER BY Id DESC LIMIT 33");
+          
             while(rs.next()){
                 //y[i][j++]=rs.getString("customer_name");
                 y[i][j++]=rs.getString("time");
