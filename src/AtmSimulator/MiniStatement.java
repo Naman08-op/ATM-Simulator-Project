@@ -16,25 +16,31 @@ public class MiniStatement extends JFrame implements ActionListener{
     
     JTable t1;
     JButton b1;
-    String x[] = {"Deposit","Withdraw","Balance"};
-    String y[][] = new String[50][3];
+    String x[] = {"Date & Time","Deposit","Withdraw","Balance"};
+    String y[][] = new String[50][4];
     int i=0, j=0;
     
     MiniStatement(){
         super("Mini Statement");
         setSize(1200,650);
         setLocation(200,200);
-     		 String pinn = JOptionPane.showInputDialog("Enter PIN");
+     		 //String pinn = JOptionPane.showInputDialog("Enter PIN");
 
         
         try{
             conn c1  = new conn();
-            ResultSet rs = c1.s.executeQuery("SELECT deposit,withdraw,balance FROM bank where pin = '" + pinn + "'");
-          String s1 = "select deposit,withdraw,balance from bank";
+             String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
+                    ResultSet rs1= c1.s.executeQuery(q7);
+                    
+                    
+                    if(rs1.next()){
+                        String pin = rs1.getString("pin");
+            ResultSet rs = c1.s.executeQuery("SELECT time,deposit,withdraw,balance FROM bank where pin = '" + pin + "'");
+          String s1 = "select time,deposit,withdraw,balance from bank";
            rs  = c1.s.executeQuery(s1);
             while(rs.next()){
                 //y[i][j++]=rs.getString("customer_name");
-               // y[i][j++]=rs.getString("date");
+                y[i][j++]=rs.getString("time");
                 y[i][j++]=rs.getString("deposit");
                 y[i][j++]=rs.getString("withdraw");
                 y[i][j++]=rs.getString("balance");
@@ -42,7 +48,7 @@ public class MiniStatement extends JFrame implements ActionListener{
                 j=0;
             }
             t1 = new JTable(y,x);
-            
+        } 
         }catch(Exception e){
             e.printStackTrace();
         }
