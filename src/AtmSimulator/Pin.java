@@ -98,6 +98,13 @@ public class Pin extends JFrame implements ActionListener{
             String a = t1.getText();
             String b = t2.getText();
             String c = t3.getText();
+            conn c1 = new conn();
+            String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
+                    ResultSet rs1= c1.s.executeQuery(q7);
+                    
+                    
+                    if(rs1.next()){
+                        String pin = rs1.getString("pin");
             
             if(ae.getSource()==b1){
                 if(t1.getText().equals("")){
@@ -113,27 +120,32 @@ public class Pin extends JFrame implements ActionListener{
                     
                     JOptionPane.showMessageDialog(null, "Re-Enter new PIN");
                 }
-                
+                if(t1.getText().equals(pin)){
                 if(t2.getText().equals(t3.getText())){
                     
-                    conn c1 = new conn();
+                    
                     String q1 = "update bank set pin = '"+b+"' where pin = '"+a+"' ";
                     String q2 = "update login set pin = '"+b+"' where pin = '"+a+"' ";
                     String q3 = "update register2 set pin = '"+b+"' where pin = '"+a+"' ";
-                    
+                    String q4 = "update hold set pin = '"+b+"' where pin = '"+a+"' ";
                     c1.s.executeUpdate(q1);
                     c1.s.executeUpdate(q2);
                     c1.s.executeUpdate(q3);
-                    
+                    c1.s.executeUpdate(q4);
                     
                     JOptionPane.showMessageDialog(null, "PIN changed successfully");
                     
                     new Transactions().setVisible(true);
                     setVisible(false);
                     
-                }else{
+                }
+                else{
                     
                     JOptionPane.showMessageDialog(null, "PIN entered doesn't match");
+                }
+                }else{
+                     JOptionPane.showMessageDialog(null, "Please enter correct pin");
+
                 }
                     
                     
@@ -144,7 +156,7 @@ public class Pin extends JFrame implements ActionListener{
                 
                 new Transactions().setVisible(true);
                 setVisible(false);
-                
+            }   
             }
         }catch(Exception e){
                     e.printStackTrace();
