@@ -131,7 +131,7 @@ public class Pin extends JFrame implements ActionListener{
                     c1.s.executeUpdate(q1);
                     c1.s.executeUpdate(q2);
                     c1.s.executeUpdate(q3);
-                    c1.s.executeUpdate(q4);
+                    c1.s.executeUpdate(q4); 
                     
                     JOptionPane.showMessageDialog(null, "PIN changed successfully");
                     
