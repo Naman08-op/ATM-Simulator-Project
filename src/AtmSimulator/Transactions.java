@@ -114,20 +114,37 @@ public class Transactions extends JFrame implements ActionListener {
         else if(ae.getSource()==b3){
            
             
-            String pinn=JOptionPane.showInputDialog("Enter PIN");
-            conn c1=new conn();
-            
-            try{
+            try {
                 
-                ResultSet rs=c1.s.executeQuery("SELECT balance FROM bank ORDER BY pin ='"+pinn+"' DESC LIMIT 1");
-                if(rs.next()){
-                    String balance=rs.getString("balance");
-                    JOptionPane.showMessageDialog(null, "Your Account Balance is "+balance);
-                }
-            } catch(Exception e){
-                e.printStackTrace();
-            }            
-            
+                
+                conn c1=new conn();
+                String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
+                ResultSet rs1= c1.s.executeQuery(q7);
+                
+                
+                try {
+                    if(rs1.next()){
+                        String pin = rs1.getString("pin");
+                        
+                        try{
+                            
+                            ResultSet rs=c1.s.executeQuery("SELECT balance FROM bank ORDER BY pin ='"+pin+"' DESC LIMIT 1");
+                            if(rs.next()){
+                                String balance=rs.getString("balance");
+                                JOptionPane.showMessageDialog(null, "Your Account Balance is "+balance);
+                            }
+                            
+                        }
+                        catch(Exception e){                         
+                            e.printStackTrace();
+                        }
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Transactions.class.getName()).log(Level.SEVERE, null, ex);
+                }          
+            } catch (SQLException ex) {
+                Logger.getLogger(Transactions.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else if(ae.getSource()==b7){
             System.exit(0);
         }
