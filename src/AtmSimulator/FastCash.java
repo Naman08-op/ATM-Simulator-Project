@@ -22,7 +22,7 @@ public class FastCash extends JFrame implements ActionListener{
     FastCash(){
         
         setFont(new Font("Dialog", Font.BOLD, 22));
-        setTitle("FAST CASH");
+        setTitle("                                                                            FAST CASH");
         
         l1 = new JLabel("SELECT WITHDRAWL AMOUNT");
         l1.setFont(new Font("Dialog", Font.BOLD, 38));

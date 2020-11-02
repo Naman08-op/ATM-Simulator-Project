@@ -21,7 +21,7 @@ public class Withdrawal extends JFrame implements ActionListener {
     Withdrawal(){
         
         setFont(new Font("Dialog", Font.BOLD, 22));
-        setTitle("WITHDRAWAL");
+        setTitle("                                                                            WITHDRAWAL");
         
         l1 = new JLabel("MAXIMUM DAILY WITHDRAWAL");
         l1.setFont(new Font("Dialog", Font.BOLD, 40));
