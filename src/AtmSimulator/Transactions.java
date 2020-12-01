@@ -18,8 +18,10 @@ import java.util.logging.Logger;
  */
 public class Transactions extends JFrame implements ActionListener {
     
-    JLabel l1;
+    JLabel l1,l2;
     JButton b1,b2,b3,b4,b5,b6,b7;
+    Icon icon = new ImageIcon("C:\\Users\\Naman\\Documents\\NetBeansProjects\\AtmSimulator\\src\\Images\\images.png");
+    JButton b8 = new JButton(icon);
     
     Transactions(){
         
@@ -28,6 +30,9 @@ public class Transactions extends JFrame implements ActionListener {
     
     l1=new JLabel("Please Select Your Transaction");
     l1.setFont(new Font("Dialog",Font.BOLD,34));
+    
+    l2=new JLabel("Map:");
+    l2.setFont(new Font("Dialog",Font.BOLD,24));
     
     b1=new JButton("Deposit");
     b1.setFont(new Font("Dialog",Font.BOLD,25));
@@ -52,8 +57,11 @@ public class Transactions extends JFrame implements ActionListener {
     
     setLayout(null);
     
-    l1.setBounds(100,100,700,40);
+    l1.setBounds(150,170,700,40);
     add(l1);
+    
+    l2.setBounds(630,30,150,40);
+    add(l2);
     
     b1.setBounds(40,250,300,60);
     add(b1);
@@ -76,6 +84,9 @@ public class Transactions extends JFrame implements ActionListener {
     b7.setBounds(240,600,300,60);
     add(b7);
     
+    b8.setBounds(700,30,60,54);
+    add(b8);
+    
     b1.addActionListener(this);
     b2.addActionListener(this);
     b3.addActionListener(this);
@@ -83,6 +94,7 @@ public class Transactions extends JFrame implements ActionListener {
     b5.addActionListener(this);
     b6.addActionListener(this);
     b7.addActionListener(this);
+    b8.addActionListener(this);
     
     setSize(800,800);
     setLocation(500,90);
@@ -145,8 +157,14 @@ public class Transactions extends JFrame implements ActionListener {
             } catch (SQLException ex) {
                 Logger.getLogger(Transactions.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }else if(ae.getSource()==b8){
+            new Map();
+             setVisible(false);
+                   
+                    
         }else if(ae.getSource()==b7){
-            System.exit(0);
+            new Login().setVisible(true);
+            setVisible(false);
         }
     }
         public static void main(String[] args){
