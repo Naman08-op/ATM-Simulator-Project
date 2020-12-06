@@ -276,9 +276,9 @@ public class Register extends JFrame implements ActionListener {
         String name= t1.getText();
         String b= t2.getText();
         
-        String ac=(String)c1.getSelectedItem();
-        String bc=(String)c2.getSelectedItem();
-        String cc=(String)c3.getSelectedItem();
+        
+        
+        String dob=(String)c1.getSelectedItem()+(String)c2.getSelectedItem()+(String)c3.getSelectedItem();
         
         String d= null;
         if(r1.isSelected()){
@@ -321,9 +321,10 @@ public class Register extends JFrame implements ActionListener {
             }else{
                 
                 conn c1=new conn();
-                String q1="insert into register(name,fname,date,month,year,gender,email,marital,religion,caste,education,occupation,income,form_no) values('"+name+"','"+b+"','"+ac+"','"+bc+"','"+cc+"','"+d+"','"+e+"','"+f+"','"+g+"','"+h+"','"+i+"','"+j+"','"+k+"','"+first+"')";
+                String q1="insert into customer(name,fname,dob,gender,email,form_no) values('"+name+"','"+b+"','"+dob+"','"+d+"','"+e+"','"+first+"')";
+                String q2="insert into personal_info(marital_status,religion,caste,education,occupation,income) values('"+f+"','"+g+"','"+h+"','"+i+"','"+j+"','"+k+"')";
                 c1.s.executeUpdate(q1);
-                
+                c1.s.executeUpdate(q2);
                 new Register2().setVisible(true);
                 setVisible(false);
         

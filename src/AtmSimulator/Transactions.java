@@ -130,7 +130,7 @@ public class Transactions extends JFrame implements ActionListener {
                 
                 
                 conn c1=new conn();
-                String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
+                String q7=("SELECT * FROM atm ORDER BY Id DESC LIMIT 1;");
                 ResultSet rs1= c1.s.executeQuery(q7);
                 
                 
@@ -140,7 +140,7 @@ public class Transactions extends JFrame implements ActionListener {
                         
                         try{
                             
-                            ResultSet rs=c1.s.executeQuery("SELECT balance FROM bank ORDER BY pin ='"+pin+"' DESC LIMIT 1");
+                            ResultSet rs=c1.s.executeQuery("SELECT balance FROM transactions WHERE pin='"+pin+"'ORDER BY id DESC LIMIT 1");
                             if(rs.next()){
                                 String balance=rs.getString("balance");
                                 JOptionPane.showMessageDialog(null, "Your Account Balance is "+balance);

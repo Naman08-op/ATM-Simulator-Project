@@ -15,7 +15,7 @@ public class conn {
     public conn(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            c=DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root","1111");
+            c=DriverManager.getConnection("jdbc:mysql://localhost:3306/smart_atm","root","1111");
             s=c.createStatement();
         }
         catch(Exception e){

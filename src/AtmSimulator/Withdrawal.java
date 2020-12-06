@@ -113,14 +113,14 @@ public class Withdrawal extends JFrame implements ActionListener {
                     
                     conn c1 = new conn();
                     
-                    String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
+                    String q7=("SELECT * FROM atm ORDER BY Id DESC LIMIT 1;");
                     ResultSet rs1= c1.s.executeQuery(q7);
                     
                     
                     if(rs1.next()){
                         String pin = rs1.getString("pin");
                         
-                        ResultSet rs = c1.s.executeQuery(" select * from bank where pin = '"+pin+"' ORDER BY Id DESC LIMIT 1");
+                        ResultSet rs = c1.s.executeQuery(" select * from transactions where pin = '"+pin+"' ORDER BY Id DESC LIMIT 1");
                         if(rs.next()){
 
                         Double balance = rs.getDouble("balance");
@@ -137,7 +137,7 @@ public class Withdrawal extends JFrame implements ActionListener {
                         }
                         else if(balance>=d ){
                             balance=balance-d;
-                        String q1= "insert into bank(pin,deposit,withdraw,balance) values('"+pin+"',null,'"+d+"','"+balance+"')";
+                        String q1= "insert into transactions(pin,deposit,withdraw,balance) values('"+pin+"',null,'"+d+"','"+balance+"')";
                     
                         c1.s.executeUpdate(q1);
                         JOptionPane.showMessageDialog(null, "Rs. "+a+" Debited Successfully");

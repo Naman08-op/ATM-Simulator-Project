@@ -117,18 +117,17 @@ public class Deposit1 extends JFrame implements ActionListener {
                     
                     conn c1 = new conn();
                     
-                    String q7=("SELECT * FROM register2 ORDER BY Id DESC LIMIT 1;");
+                    String q7=("SELECT * FROM credentials ORDER BY Id DESC LIMIT 1;");
                     ResultSet rs= c1.s.executeQuery(q7);
                     if(rs.next()){
                   String pin =rs.getString("pin");
-                  String atmid=rs.getString("atmid");
-                  String cardno=rs.getString("cardno");
+                  
                   
               
                     
                     
                     
-                        String q1= "insert into bank(pin,deposit,withdraw,balance) values('"+pin+"','"+a+"',null,'"+a+"')";
+                        String q1= "insert into transactions(pin,deposit,withdraw,balance) values('"+pin+"','"+a+"',null,'"+a+"')";
                     
                         c1.s.executeUpdate(q1);
                     
@@ -137,7 +136,7 @@ public class Deposit1 extends JFrame implements ActionListener {
                     
                     JOptionPane.showMessageDialog(null, "Rs. "+a+" Deposited Successfully");
                     
-                    new Transactions().setVisible(true);
+                    new Login().setVisible(true);
                     setVisible(false);
                     
                     }   
@@ -146,7 +145,7 @@ public class Deposit1 extends JFrame implements ActionListener {
                 
             }else if(ae.getSource()==b2){
                 
-                new Transactions().setVisible(true);
+                new Login().setVisible(true);
                 setVisible(false);
                 
             }else if(ae.getSource()==b3){

@@ -99,7 +99,7 @@ public class Pin extends JFrame implements ActionListener{
             String b = t2.getText();
             String c = t3.getText();
             conn c1 = new conn();
-            String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
+            String q7=("SELECT * FROM atm ORDER BY Id DESC LIMIT 1;");
                     ResultSet rs1= c1.s.executeQuery(q7);
                     
                     
@@ -124,14 +124,12 @@ public class Pin extends JFrame implements ActionListener{
                 if(t2.getText().equals(t3.getText())){
                     
                     
-                    String q1 = "update bank set pin = '"+b+"' where pin = '"+a+"' ";
-                    String q2 = "update login set pin = '"+b+"' where pin = '"+a+"' ";
-                    String q3 = "update register2 set pin = '"+b+"' where pin = '"+a+"' ";
-                    String q4 = "update hold set pin = '"+b+"' where pin = '"+a+"' ";
+                    String q1 = "update transactions set pin = '"+b+"' where pin = '"+a+"' ";
+                    String q2 = "update credentials set pin = '"+b+"' where pin = '"+a+"' ";
+                    String q3 = "update atm set pin = '"+b+"' where pin = '"+a+"' ";
                     c1.s.executeUpdate(q1);
                     c1.s.executeUpdate(q2);
                     c1.s.executeUpdate(q3);
-                    c1.s.executeUpdate(q4); 
                     
                     JOptionPane.showMessageDialog(null, "PIN changed successfully");
                     

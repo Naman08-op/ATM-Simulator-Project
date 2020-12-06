@@ -14,7 +14,7 @@ import java.sql.*;
 public class MiniStatement extends JFrame implements ActionListener{
     
     JTable t1;
-    JButton b1;
+    JButton b1,b2;
     String x[] = {"Date & Time","Deposit","Withdraw","Balance"};
     String y[][] = new String[35][4];
     int i=0, j=0;
@@ -28,14 +28,14 @@ public class MiniStatement extends JFrame implements ActionListener{
         
         try{
             conn c1  = new conn();
-             String q7=("SELECT * FROM hold ORDER BY Id DESC LIMIT 1;");
+             String q7=("SELECT * FROM atm ORDER BY Id DESC LIMIT 1;");
                     ResultSet rs1= c1.s.executeQuery(q7);
                     
                     
                     if(rs1.next()){
                         String pin = rs1.getString("pin");
             ResultSet rs;
-                rs = c1.s.executeQuery("SELECT time,deposit,withdraw,balance FROM bank where pin = '" + pin + "'ORDER BY Id DESC LIMIT 33");
+                rs = c1.s.executeQuery("SELECT time,deposit,withdraw,balance FROM transactions where pin = '" + pin + "'ORDER BY Id DESC LIMIT 33");
           
             while(rs.next()){
                 //y[i][j++]=rs.getString("customer_name");
@@ -54,17 +54,26 @@ public class MiniStatement extends JFrame implements ActionListener{
         
         
         b1 = new JButton("Print");
-        add(b1,"South");
+        add(b1,"North");
+        b2 = new JButton("Exit");
+        add(b2,"South");
         JScrollPane sp = new JScrollPane(t1);
         add(sp);
         b1.addActionListener(this);
+        b2.addActionListener(this);
+
     }
     public void actionPerformed(ActionEvent ae){
+        if(ae.getSource()==b2){
+            new Transactions().setVisible(true);
+            setVisible(false);
+        }
+        else{
         try{
             t1.print();
         }catch(Exception e){}
     }
-    
+    }
     public static void main(String[] args){
         new MiniStatement().setVisible(true);
     }

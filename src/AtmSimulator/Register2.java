@@ -40,7 +40,7 @@ public class Register2 extends JFrame implements ActionListener {
         
         try{
                 conn c2=new conn();
-                q7=("SELECT * FROM register ORDER BY Id DESC LIMIT 1;");
+                q7=("SELECT * FROM customer ORDER BY Id DESC LIMIT 1;");
               rs= c2.s.executeQuery(q7);
               if(rs.next()){
                   form =rs.getString("form_no");
@@ -336,11 +336,11 @@ public class Register2 extends JFrame implements ActionListener {
         //to generate random card number
         Random ran=new Random();
         long first7=(ran.nextLong()%90000000L)+ 5830178000000000L;
-        long first8=Math.abs(first7);
+        long card_no=Math.abs(first7);
         
         //to generate random pin
         long first3=(ran.nextLong()%9000L)+1000L;
-        long first4=Math.abs(first3);
+        long pin=Math.abs(first3);
         
         //to generate an atm id for eg if name=namanchhajed and
         //form number generated in Register.java class is 7979
@@ -348,7 +348,7 @@ public class Register2 extends JFrame implements ActionListener {
         
         //String first5=final_nameid+form+"@smartbank.dy.in";
         
-        String first5=final_name+form+"@smartbank.dy.in";
+        String atmid=final_name+form+"@smartbank.dy.in";
         
         
         //end of atm id func
@@ -387,19 +387,15 @@ public class Register2 extends JFrame implements ActionListener {
                
             else{
                 conn c1=new conn();
-                String q1="insert into register2(address,city,pincode,state,pan,aadhar,senior,existing,account,cardno,atmid,pin) values('"+a+"','"+b+"','"+c+"','"+d+"','"+e+"','"+f+"','"+g+"','"+h+"','"+i+"','"+first8+"','"+first5+"','"+first4+"')";
-               // String q1="insert into register2 values('"+a+"','"+b+"','"+c+"','"+d+"','"+e+"','"+f+"','"+g+"','"+h+"','"+i+"','"+first8+"','"+first4+"')";
-//                String q3="SELECT MAX(id) FROM register"
-//                        + "SELECT form_no FROM tablename WHERE id = ???";
-
-        
-                
-                String q2="insert into login(pin,atmid) values('"+first4+"','"+first5+"')";
+                //String q1="insert into personal_info(address,city,pincode,state,pan_no,aadhar_no,senior_citizen,existing_acc) values('"+a+"','"+b+"','"+c+"','"+d+"','"+e+"','"+f+"','"+g+"','"+h+"')";
+                String q1="UPDATE personal_info SET address='"+a+"',city='"+b+"',pincode='"+c+"',state='"+d+"',pan_no='"+e+"',aadhar_no='"+f+"',senior_citizen='"+g+"',existing_acc='"+h+"' ORDER BY id DESC LIMIT 1";
+                String q2="UPDATE customer SET account_type ='"+i+"' ORDER BY id DESC LIMIT 1";
+                String q3="insert into credentials(card_no,atmid,pin) values ('"+card_no+"','"+atmid+"','"+pin+"')";
                 c1.s.executeUpdate(q1);
                 c1.s.executeUpdate(q2);
-//                c1.s.executeUpdate(q3);
+                c1.s.executeUpdate(q3);
                 
-                JOptionPane.showMessageDialog(null, "Card Number: " + first8 + "\n ATM ID:"+first5+ "\n Pin:"+ first4 );
+                JOptionPane.showMessageDialog(null, "Card Number: " + card_no + "\n ATM ID:"+atmid+ "\n Pin:"+ pin );
                 
                 new Deposit1().setVisible(true);
                 setVisible(false);
