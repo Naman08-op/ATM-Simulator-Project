@@ -23,10 +23,10 @@ public class Withdrawal extends JFrame implements ActionListener {
         setFont(new Font("Dialog", Font.BOLD, 22));
         setTitle("                                                                            WITHDRAWAL");
         
-        l1 = new JLabel("MAXIMUM DAILY WITHDRAWAL");
+        l1 = new JLabel("       ONE TIME WITHDRAWAL");
         l1.setFont(new Font("Dialog", Font.BOLD, 40));
         
-        l2 = new JLabel("IS RS.10,000");
+        l2 = new JLabel("LIMIT: RS.10,000");
         l2.setFont(new Font("Dialog", Font.BOLD, 40));
         
         l3 = new JLabel("PLEASE ENTER YOUR AMOUNT");
@@ -65,7 +65,7 @@ public class Withdrawal extends JFrame implements ActionListener {
         l1.setBounds(90,100,800,60);
         add(l1);
         
-        l2.setBounds(270,160,800,60);
+        l2.setBounds(260,160,800,60);
         add(l2);
         
         l3.setBounds(120,260,800,60);
